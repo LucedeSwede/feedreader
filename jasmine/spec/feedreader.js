@@ -81,8 +81,6 @@ $(function() {
             $(menuIcon).trigger('click');
             expect($('body').hasClass('menu-hidden')).toBe(true);
         });
-
-
     });
 
 
@@ -97,6 +95,22 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
+
+    describe('Initial Entries', function() {
+
+        beforeEach(function(done) {
+            loadFeed(0, function() {
+                done();
+            });
+        });
+
+        it('on loadFeed, have at least 1 .entry element in .feed container', function(done) {
+            expect($('.feed').find('article').hasClass('entry')).toBe(true);
+            done();
+        });
+    });
+
+
 
     /* TODO: Write a new test suite named "New Feed Selection" */
 
