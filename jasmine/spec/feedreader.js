@@ -118,4 +118,29 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-}());
+
+    describe('New Feed Selection', function() {
+
+        let feedhtml1, feedhtml2;
+
+        beforeEach(function(done) {
+            loadFeed(0, function() {
+                feedhtml1 = $('.feed').find('h2').html();
+            });
+
+            loadFeed(1, function() {
+                feedhtml2 = $('.feed').find('h2').html();
+                done();
+            });
+        });
+
+        it('on new loadFeed, content changes', function(done) {
+            expect(feedhtml1 === feedhtml2).toBe(false);
+            loadFeed(0);
+            done();
+        });
+    });
+
+
+
+});
