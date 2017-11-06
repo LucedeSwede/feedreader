@@ -67,7 +67,7 @@ $(function() {
         });
 
         it('on loadFeed, have at least 1 .entry element in .feed container', function(done) {
-            expect($('.feed').find('.entry').length).toBeGreaterThan(0);
+            expect($('.feed .entry').length).toBeGreaterThan(0);
             done();
         });
     });
