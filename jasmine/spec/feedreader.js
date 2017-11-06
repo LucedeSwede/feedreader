@@ -79,17 +79,16 @@ $(function() {
 
         beforeEach(function(done) {
             loadFeed(0, function() {
-                feedhtml1 = $('.feed').find('h2').html();
-            });
-
-            loadFeed(1, function() {
-                feedhtml2 = $('.feed').find('h2').html();
-                done();
+                feedhtml1 = $('.feed').html();
+                loadFeed(1, function() {
+                    feedhtml2 = $('.feed').html();
+                    done();
+                });
             });
         });
 
         it('on new loadFeed, content changes', function(done) {
-            expect(feedhtml1 === feedhtml2).toBe(false);
+            expect(feedhtml1).not.toBe(feedhtml2);
             loadFeed(0);// Load default first feed again
             done();
         });
